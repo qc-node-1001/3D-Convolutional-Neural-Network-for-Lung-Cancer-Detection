@@ -1,4 +1,4 @@
-# 3D-Convolutional-Neural-Network-for-Lung-Cancer-Detection
+# 3D Convolutional Neural Network for Lung Cancer Detection
 
 So I did some Medical Image Computing in my undergraduate engineering course and adored it! Since I'm interested in computer vision (and intelligence)
 I wanted to see how AI, namely: deep learning can be applied in this Medical computer vision. Hence, motivated by some of the work done by
