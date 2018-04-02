@@ -15,16 +15,6 @@ I am limited to my memory space, computing power and time. Hence, running a larg
 The repository comprises of 4 files:
 1. Data Visualisation: this is where I simply import and examine the data aswell as apply other techniques such as 3D visualisation of the 
    lung CT scan, Watershed segmentation, applying edge filters like sobel operators and etc.
-2. Model: this is a script of the 3D CNN model using 3 different libraries: Keras, TensorFlow and pytorch.
+2. Model: this is a script of the 3D CNN model using 3 different libraries: Keras, TensorFlow.
 3. Train_Test: this is where I train and test the model (as name implies)
 4. Inference: this is where I deploy the model to see how it works.
-
-# Results
-
-1. The following are images of the visualisation, where the first image (from left) is simply visualising 20 slices of 1 patient, second image
-is edge filtering, third is the 3D visualisation of the whole lung of the patient via combination of individual slices and the fourth is simply
-the segmentation of the lung.
-
-2. The following shows the train and test accuracy curve of the 3D CNN
-
-3. the following shows the actual inference result
