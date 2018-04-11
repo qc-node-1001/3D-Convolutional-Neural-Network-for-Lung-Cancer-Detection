@@ -42,7 +42,7 @@ def mean(List):
 
 def PreProcessData(patients,patient_id,Pixel_size,slice_count,visualise=False):
     label= patient_id.get_value(i,'cancer')
-    path= os.path.join(data_directory,i)
+    path= os.path.join(data_directory,i) # combine the path to access the patient folders
     slices= [dicom.read_file(path + '/' + s) for s in os.listdir(path)]
     slices.sort(key=lambda x: int(x.ImagePositionPatient[2]))
     # resize the slice:
