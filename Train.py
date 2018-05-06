@@ -1,21 +1,20 @@
 import tensorflow as tf
 import numpy as np
 
-pix_size= 100
+pix_size= 70
 Slice_count=40
 
 classes= 2
 batch_size= 10
 
-# Placeholders for input data (image= 100x100x40, labels=2 (0 or 1))
+# Placeholders for input data (image= 70x70x40, labels=2 (0 or 1))
 x = tf.placeholder(tf.float32, shape=[None, pix_size*pix_size*Slice_count]) # [None, 100*100*40]
 y_ = tf.placeholder(tf.float32, shape=[None, classes])  # [None, 2]
 
 def CNN_Model(x):
     # Model for the 3D CNN
-
     input_layer = tf.reshape(x, [-1, pix_size, pix_size, Slice_count, 1])
-
+    
     # Convolutional Layer #1 and Pooling Layer #1
     conv1 = tf.layers.conv3d(
         inputs=input_layer,
@@ -65,6 +64,10 @@ y= TrainData[1]
 
 
 # defining training:
+with tf.variable_scope('logging'):
+	tf.summary.scalar('current_cost',cost)
+	summary= tf.summary.merge_all()
+saver= tf.train.Saver()
 
 
 nb_epochs= 100
@@ -75,7 +78,10 @@ def TrainCNN_model(x):
 
     with tf.Session as session:
         session.run(tf.global_variables_initializer())
-    
+    	# printing the data to tensorboard for visualisation!
+    	training_writer= tf.summary.FileWriter("./logs/training",session.graph)
+    	testing_writer= tf.summary.FileWriter("'./logs/testing", session.graph)
+
         for epoch in range(nb_epochs):
             _,run=session.run(optimizer, feed_dict={x:TrainData[0], y:TrainData[1]})
             epoch_loss+=run
